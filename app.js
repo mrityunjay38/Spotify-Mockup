@@ -1,50 +1,26 @@
 const express =  require('express');
 const path = require('path');
+const exphbs = require('express-handlebars');
 
-const app = express();
+const app = express();  
+
+
+// Handlebars
+
+app.engine('handlebars', exphbs({defaultLayout : 'main'}));
+app.set('view engine', 'handlebars');
+
+// Express in-built body parser
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-let members = [
-    {
-        name : "MJ",
-        email : '@gmail.com',
-    },
-    {
-        name : "CJ",
-        email : '@mail.com',
-    },
-    {
-        name : "DJ",
-        email : '@yahoo.com',
-    }
-];
 
-app.get('/api/members', (req, res) => {
-    return res.json(members);
-});
+// Router functions
 
-app.post('/api/members', (req, res) => {
-    const newMember = {
-        name : req.body.name,
-        email : req.body.email
-    }
-    members.push(newMember);
-    res.json(members);
-});
+const index = require('./routes/api');
 
-app.put('/api/members', (req, res) => {
-    members[req.body.index].email = req.body.email
-    res.json(members);
-} );
-
-app.delete('/api/members', (req, res) => {
-    members.pop();
-    res.json(members);
-});
-
-
+app.use('/', index);
 
 // Set static folder
 
