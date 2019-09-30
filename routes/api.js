@@ -1,38 +1,36 @@
 const express = require('express');
 const router = express.Router();
-const runQuery = require('../database/runQuery');
+const dbQuery = require('../database/dbQuery');
+const verifyToken = require('../middleware/verifyToken');
+
 
 router.get('/', async (req, res) => {
     try{
-        let result = await runQuery.fetchAllTracks();
-        console.log(result);
-        res.json(result);
+        let result = await dbQuery.fetchAllTracks();
+        res.render('index', {result});
+
     }
     catch (err) {
         console.log('Error while fetching Spotify.....');
-        console.log(err);
         res.json(err);    
     }
 });
 
-router.post('/artist=:artist', async (req, res) => {
+router.post('/artist=:artist', verifyToken , async (req, res) => {
     try {
-        let result  = await runQuery.insertArtist(req.params.artist);
-        console.log(result);
+        let result  = await dbQuery.insertArtist(req.params.artist);
         res.json(result);
     }
     catch (err) {
         console.log('Error while inserting track.....');
-        console.log(err);
         res.json(err);
     }
 });
 
 
-router.post('/track', async (req, res) => {
+router.post('/track', verifyToken, async (req, res) => {
     try {
-        let result  = await runQuery.insertTrack(req.body);
-        console.log(result);
+        let result  = await dbQuery.insertTrack(req.body);
         res.json(result);
     }
     catch (err) {

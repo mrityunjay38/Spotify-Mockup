@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <th>#</th>
+        <th>Track</th>
+        <th>Artist</th>
+    </tr>
+    {{#each result}}
+    <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.track}}</td>
+        <td>{{this.artist}}</td>
+    </tr>
+    {{/each}}
+</table>

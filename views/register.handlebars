@@ -1,0 +1,16 @@
+<img src="../img/spotify-logo.png" alt="spotify-logo">
+<form class="register-form" action="/user/register" method="POST">
+    <h1>Register</h1>
+    <p>Fill form to create an account.</p>
+    <label for="error">{{status}}</label>
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <label for="username">Username</label>
+    <input type="text" name="username" placeholder="Enter your username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Enter your password" required>
+    <button type="submit">Register</button>
+    <p>Already have an account?
+    <a href="/user/login">Sign in</a>
+    </p>
+</form>

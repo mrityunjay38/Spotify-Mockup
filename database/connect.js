@@ -24,9 +24,9 @@ database.connect( err => {
 
 // Promisify query
 
-function dbQuery(query, val) {
+function dbQuery(query, value) {
     return new Promise ( (resolve,reject) => {
-        database.query(query, val, (err,result) => {
+        database.query(query, value, (err,result) => {
             if(err)
                 reject(err);
             else 

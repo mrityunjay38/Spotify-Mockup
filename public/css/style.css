@@ -1,0 +1,103 @@
+body {
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Helvetica;
+}
+
+/* Main page track list */
+
+table {
+    border-collapse: collapse;
+    font-family: Helvetica;
+    width: 100%;
+    background: black;
+    color: #ffffff;
+}
+
+tr {
+    border-bottom: 1px solid black;
+
+}
+tr:hover {
+    background: #1b1b1b;
+}
+
+th,td {
+    font-size: 1rem;
+    border: 1px solid #282828;
+    line-height: 1.4;
+    padding: 0.5em;
+    text-align: center;
+}
+
+th,td:hover {
+    color: #1ed760; 
+}
+
+/* Login Page  */
+
+.login-form, .register-form, .add-track-form {
+    width: 50%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-transform: uppercase;
+    background: #354463;
+    color: #fff;
+    margin-top: 10em;
+}
+
+label {
+    padding-top: 1rem; 
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid #C1F7D5;
+    padding: 1rem 0 1rem 0;
+    background: #354463;
+    color: #fff;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    background: #1ed760;
+    padding: 1em;
+    border-radius: 100px;
+    width: 20%;
+    margin-top: 2rem;
+    font: Bold 1rem/1rem Helvetica;
+    color: #354463;
+    border: none;
+    text-transform: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Register Form */
+
+.register-form {
+    margin-top: 5em;
+}
+
+a {
+    background: #1ed760;
+    padding: 1em 2em 1em 2em;
+    border-radius: 100px;
+    width: 20%;
+    font: Bold 1rem/1rem Helvetica;
+    color: #354463;
+    border: none;
+    text-decoration: none;
+    text-transform: none;
+}

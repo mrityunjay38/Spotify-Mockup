@@ -1,6 +1,7 @@
 const express =  require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const cookieParser = require('cookie-parser');
 
 const app = express();  
 
@@ -14,17 +15,18 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 // Router functions
 
-const index = require('./routes/api');
+const allTracks = require('./routes/api');
+const users = require('./routes/users');
 
-app.use('/', index);
 
-// Set static folder
+app.use('/', allTracks);
+app.use('/user', users);
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 const PORT = process.env.PORT || 5000;
 
