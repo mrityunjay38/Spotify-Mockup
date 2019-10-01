@@ -16,25 +16,25 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/artist=:artist', verifyToken , async (req, res) => {
+router.put('/artist=:artist', verifyToken , async (req, res) => {
     try {
-        let result  = await dbQuery.insertArtist(req.params.artist);
+        let result  = await dbQuery.modifyArtist(req.params.artist);
         res.json(result);
     }
     catch (err) {
-        console.log('Error while inserting track.....');
+        console.log('Error while modifying artist.....');
         res.json(err);
     }
 });
 
 
-router.post('/track', verifyToken, async (req, res) => {
+router.delete('/artist=:artist', verifyToken, async (req, res) => {
     try {
-        let result  = await dbQuery.insertTrack(req.body);
+        let result  = await dbQuery.deleteArtist(req.params.artist);
         res.json(result);
     }
     catch (err) {
-        console.log('Error while inserting track.....');
+        console.log('Error while deleting artist.....');
         console.log(err);
         res.json(err);
     }

@@ -21,8 +21,23 @@ async function insertTrack(data) {
     
 }
 
+async function modifyArtist(artist){
+    let result = await dbQuery('select artist from Artists where artist = ?',artist);
+    if(result.length !== 0){
+        await dbQuery(`update Artists set artist = ? where artist = '${artist}'`,artist);
+    }
+}
+
+async function deleteArtist(artist){
+    let result = await dbQuery('select artist from Artists where artist = ?',artist);
+    if(result.length !== 0){
+        await dbQuery(`delete from Artists where artist = ?`,artist);
+    }
+}
 
 module.exports = {
     fetchAllTracks,
-    insertTrack
+    insertTrack,
+    modifyArtist,
+    deleteArtist
 }
