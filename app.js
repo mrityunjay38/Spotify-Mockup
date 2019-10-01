@@ -20,10 +20,11 @@ app.use(cookieParser());
 
 // Router functions
 
-const allTracks = require('./routes/api');
+const allArtists = require('./routes/artists');
+const allTracks = require('./routes/tracks');
 const users = require('./routes/users');
 
-
+app.use('/', allArtists);
 app.use('/', allTracks);
 app.use('/user', users);
 

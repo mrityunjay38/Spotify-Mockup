@@ -1,12 +1,13 @@
+require('dotenv').config();
 const mysql = require('mysql');
 
 // Database credentials
 
 const loginDetails = {
-    host : 'localhost',
-    user : 'mj',
-    password : '12',
-    database : 'spotify'
+    host : process.env.HOST,
+    user : process.env.USERNAME,
+    password : process.env.PASSWORD,
+    database : process.env.DATABASE
 }
 
 // Establish connection

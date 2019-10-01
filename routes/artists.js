@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
     try{
         let result = await dbQuery.fetchAllTracks();
         res.render('index', {result});
-
     }
     catch (err) {
         console.log('Error while fetching Spotify.....');
@@ -20,10 +19,12 @@ router.put('/artist=:artist', verifyToken , async (req, res) => {
     try {
         let result  = await dbQuery.modifyArtist(req.params.artist);
         res.json(result);
+        res.status(200);
     }
     catch (err) {
         console.log('Error while modifying artist.....');
         res.json(err);
+        res.status(403);
     }
 });
 
@@ -32,11 +33,13 @@ router.delete('/artist=:artist', verifyToken, async (req, res) => {
     try {
         let result  = await dbQuery.deleteArtist(req.params.artist);
         res.json(result);
+        res.status(200);
     }
     catch (err) {
         console.log('Error while deleting artist.....');
-        console.log(err);
         res.json(err);
+        res.status(403);
+
     }
 });
 

@@ -1,6 +1,6 @@
 const dbQuery = require('../database/dbQuery');
 
-async function dashboard(req, res, next){
+async function dashboard(req, res){
     const newTrack = {
         artist : req.body.artist,
         track : req.body.track
@@ -9,10 +9,7 @@ async function dashboard(req, res, next){
     try{
         await dbQuery.insertTrack(newTrack);
         res.render('dashboard', {status : 'New track added.'});
-        setTimeout(function(){
-            next();
-        },3000);
-    
+        res.status(200);
     }
     catch (err) {
         res.render('dashboard', {status : 'New track addition unsuccessful.'});
