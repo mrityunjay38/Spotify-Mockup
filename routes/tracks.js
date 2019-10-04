@@ -3,7 +3,8 @@ const router = express.Router();
 const dbQuery = require("../database/dbQuery");
 const verifyToken = require("../middleware/verifyToken");
 
-router.put("/track=:track", verifyToken, async (req, res) => {
+
+router.put("/track=:track", async (req, res) => {
   try {
     let result = await dbQuery.modifyTrack(req.params.track);
     res.json(result);
@@ -11,11 +12,11 @@ router.put("/track=:track", verifyToken, async (req, res) => {
   } catch (err) {
     console.log("Error while modifying track.....");
     res.json(err);
-    res.status(403);
+    res.status(404);
   }
 });
 
-router.delete("/track=:track", verifyToken, async (req, res) => {
+router.delete("/track=:track", async (req, res) => {
   try {
     let result = await dbQuery.deleteTrack(req.params.track);
     res.json(result);
@@ -23,7 +24,7 @@ router.delete("/track=:track", verifyToken, async (req, res) => {
   } catch (err) {
     console.log("Error while deleting track.....");
     res.json(err);
-    res.status(403);
+    res.status(404);
   }
 });
 

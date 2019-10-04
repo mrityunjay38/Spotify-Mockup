@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.put("/artist=:artist", verifyToken, async (req, res) => {
+router.put("/artist=:artist", async (req, res) => {
   try {
     let result = await dbQuery.modifyArtist(req.params.artist);
     res.json(result);
@@ -25,7 +25,7 @@ router.put("/artist=:artist", verifyToken, async (req, res) => {
   }
 });
 
-router.delete("/artist=:artist", verifyToken, async (req, res) => {
+router.delete("/artist=:artist", async (req, res) => {
   try {
     let result = await dbQuery.deleteArtist(req.params.artist);
     res.json(result);

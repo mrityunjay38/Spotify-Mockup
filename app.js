@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const exphbs = require("express-handlebars");
 const cookieParser = require("cookie-parser");
+const verifyToken = require("./middleware/verifyToken");
 
 const app = express();
 
@@ -23,6 +24,7 @@ const allArtists = require("./routes/artists");
 const allTracks = require("./routes/tracks");
 const users = require("./routes/users");
 
+app.use(verifyToken);
 app.use("/", allArtists);
 app.use("/", allTracks);
 app.use("/user", users);
