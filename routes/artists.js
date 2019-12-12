@@ -21,7 +21,7 @@ router.put("/artist=:artist", async (req, res) => {
   } catch (err) {
     console.log("Error while modifying artist.....");
     res.json(err);
-    res.status(403);
+    res.status(404);
   }
 });
 
@@ -33,7 +33,7 @@ router.delete("/artist=:artist", async (req, res) => {
   } catch (err) {
     console.log("Error while deleting artist.....");
     res.json(err);
-    res.status(403);
+    res.status(404);
   }
 });
 
